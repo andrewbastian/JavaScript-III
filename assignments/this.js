@@ -2,7 +2,7 @@
 * in your own words. explain the four principle for the "this" keyword below.
 *
 * 1. window binding "this" will be the window or console object.
-* 2.Implicit binding a method is called with a dot after. The object to the right of that dot is "this"
+* 2.Implicit binding a method is called with a dot after. The object to the left of that dot is "this"
 * 3. New Binding uses the 'keyword' "new". "this" will be the new constructor funciton.
 * 4.Explicit Binding also uses new constructor, but changes the objects that "this" points to object.
 *
