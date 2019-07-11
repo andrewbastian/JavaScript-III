@@ -53,19 +53,15 @@ CharacterStats.prototype.takeDamage = function(target, targetDamage){
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid(HumanoidAttributes) {
+    CharacterStats.call(this, HumanoidAttributes);
   this.team =HumanoidAttributes.team;
   this.wepon = HumanoidAttributes.wepon;
   this.language = HumanoidAttributes.language;
 }
 Humanoid.prototype = Object.create(CharacterStats.prototype);
-CharacterStats.call(this, HumanoidAttributes);{
-  Humanoid.prototype.greet = function()
+  Humanoid.prototype.greet = function(){
   return (`${this.name} offers a greeting in ${this.language}.`);
-  Humanoid.prototype.destroy = function()
-  return (${this.destroy});
-  Humanoid.prototype.takeDamage = function()
-  return (${this.takeDamage});
-}
+};
 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -136,7 +132,7 @@ CharacterStats.call(this, HumanoidAttributes);{
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+// */
 
   // Stretch task:
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
