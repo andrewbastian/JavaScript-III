@@ -1,3 +1,4 @@
+
 /*
   Object oriented design is commonly used in video games.  For this part of the assignment you will be implementing several constructor functions with their correct inheritance hierarchy.
 
@@ -20,6 +21,9 @@ function GameObject(attributes) {
   this.name = attributes.name;
   this.dimensions = attributes.dimensions;
 }
+GameObject.prototype.destroy = function(){
+  return `${this.name} was removed from the game.`;
+}
 
 
 /*
@@ -37,7 +41,7 @@ function CharacterStats(CharacterAttributes) {
 }
 CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function(target, targetDamage){
-  console.log( `${this.name} took damage.`);
+  return ( `${this.name} took damage.`);
   if (target.healthPoints <= targetDamage){
     target.destroy()
   }
@@ -55,7 +59,7 @@ CharacterStats.prototype.takeDamage = function(target, targetDamage){
 function Humanoid(HumanoidAttributes) {
     CharacterStats.call(this, HumanoidAttributes);
   this.team =HumanoidAttributes.team;
-  this.wepon = HumanoidAttributes.wepon;
+  this.weapons = HumanoidAttributes.weapons;
   this.language = HumanoidAttributes.language;
 }
 Humanoid.prototype = Object.create(CharacterStats.prototype);
@@ -130,7 +134,7 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
   console.log(mage.weapons); // Staff of Shamalama
   console.log(archer.language); // Elvish
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  console.log(mage.takeDamage()); // Bruce took damage.
+  console.log(mage.takeDamage(mage, 1000)); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // */
 
