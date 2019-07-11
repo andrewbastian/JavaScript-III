@@ -19,10 +19,9 @@ function GameObject(attributes) {
   this.createdAt = attributes.createdAt;
   this.name = attributes.name;
   this.dimensions = attributes.dimensions;
-  GameObject.prototype.destroy = function() {
-  return ` ${this.name} was removed from game.`;
 }
-}
+
+
 /*
   === CharacterStats ===
   * healthPoints
@@ -32,14 +31,19 @@ function GameObject(attributes) {
 
 function CharacterStats(CharacterAttributes) {
   // call() takes the key value pairs from Parent and hooks them up to Child
-CharacterStats.prototype = Object.create(GameObject.prototype);
+
   GameObject.call(this, CharacterAttributes);
   this.healthPoints = CharacterAttributes.healthPoints;
-  CharacterStats.prototype.takeDamage = funciton()
-    return `<object name> took damage.` + this.distroy
 }
-
+CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype.takeDamage = function(target, targetDamage){
+  console.log( `${this.name} took damage.`);
+  if (target.healthPoints <= targetDamage){
+    target.destroy()
+  }
+}
 /*
+
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
   * weapons
@@ -52,12 +56,15 @@ function Humanoid(HumanoidAttributes) {
   this.team =HumanoidAttributes.team;
   this.wepon = HumanoidAttributes.wepon;
   this.language = HumanoidAttributes.language;
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  CharacterStats.call(this, HumanoidAttributes);{
-    Humanoid.prototype.greet = funciton()
-    return `<object name> offers a greeting in <object language>.`
-  }
-
+}
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+CharacterStats.call(this, HumanoidAttributes);{
+  Humanoid.prototype.greet = function()
+  return (`${this.name} offers a greeting in ${this.language}.`);
+  Humanoid.prototype.destroy = function()
+  return (${this.destroy});
+  Humanoid.prototype.takeDamage = function()
+  return (${this.takeDamage});
 }
 
 /*
@@ -68,7 +75,7 @@ function Humanoid(HumanoidAttributes) {
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+// /*
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
